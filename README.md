@@ -9,3 +9,5 @@ Every room has:
 
 Win condition: Kill the dragon and save the prince. 
 Lose condition: Face the dragon without a sword and die.
+
+**You can run the game by compile and then running the Applicattion.java class**
