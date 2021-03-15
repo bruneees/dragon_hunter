@@ -15,7 +15,6 @@ import java.util.*;
  * @version 2020
  */
 
-
 public class Room 
 {
     private String description;

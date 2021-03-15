@@ -32,6 +32,7 @@ public class Player implements Playable, Addressable
        playerStates.push(new PlayerState(currentRoom, items));
        currentRoom = nextRoom;
        
+       //check if room has a dragon
        if(currentRoom.hasDragon())
        {
            for(Item item : items)
@@ -65,7 +66,6 @@ public class Player implements Playable, Addressable
    public void feelDoor(String door)
    {
        Room nextRoom = currentRoom.getExit(door);
-       
        if(nextRoom.hasDragon())
        {
            gui.print("\nThis door feels warm.");
@@ -74,7 +74,6 @@ public class Player implements Playable, Addressable
        {
            gui.print("\nThis door feel normal.\n");
        }
-       
    }
    
    public void restartPlayer()
@@ -127,9 +126,16 @@ public class Player implements Playable, Addressable
    
    public void back()
    {
-       PlayerState previousState = playerStates.pop();
-       this.currentRoom = previousState.getCurrentRoom();
-       gui.print(currentRoom.getLongDescription());
+       if(!playerStates.isEmpty())
+       {
+            PlayerState previousState = playerStates.pop();
+            this.currentRoom = previousState.getCurrentRoom();
+            gui.print(currentRoom.getLongDescription());
+       } 
+       else 
+       {
+            gui.print("\nYou have nowhere to go back to!");
+       }
    }
    
    public void help()

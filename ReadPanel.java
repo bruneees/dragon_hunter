@@ -5,6 +5,13 @@ import java.awt.event.ActionListener;
 public class ReadPanel
 {
    private PrimaryGUI gui;
+
+   private JPanel panel = new JPanel();
+        
+   private JButton goremacksSword = new JButton("GoreMack's Sword");
+   private JButton silverDragon = new JButton("The Silver Dragon");
+   private JButton harryPotter = new JButton("Harry Potter");
+   
    public ReadPanel(PrimaryGUI g)
    {
        this.gui = g;
@@ -12,37 +19,40 @@ public class ReadPanel
    
    public JPanel getReadPanel()
    {
-        JPanel panel = new JPanel();
-        
-        JButton goremacksSword = new JButton("GoreMack's Sword");
-        JButton silverDragon = new JButton("The Silver Dragon");
-        JButton harryPotter = new JButton("Harry Potter");
+        addButtons();
+        addButtonListeners();
+        return panel;
+   }
 
-        goremacksSword.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gui.player.readBook("goremack's sword");
-                gui.primary();
-            }
-        });
-        
-        silverDragon.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gui.player.readBook("silver dragon");
-                gui.primary();
-            }
-        });
-        
-        harryPotter.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gui.player.readBook("harry potter");
-                gui.primary();
-            }
-        });
-        
-       
+   public void addButtonListeners()
+   {
+    goremacksSword.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            gui.player.readBook("goremack's sword");
+            gui.primary();
+        }
+    });
+    
+    silverDragon.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            gui.player.readBook("silver dragon");
+            gui.primary();
+        }
+    });
+    
+    harryPotter.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            gui.player.readBook("harry potter");
+            gui.primary();
+        }
+    });
+   }
+
+   public void addButtons()
+   {
         if(gui.player.hasBook("goremack's sword"))
         {
             panel.add(goremacksSword);
@@ -55,7 +65,5 @@ public class ReadPanel
         {
             panel.add(harryPotter);
         }
-        
-        return panel;
    }
 }

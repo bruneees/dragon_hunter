@@ -6,6 +6,18 @@ import javax.swing.*;
 public class PrimaryPanel
 {
     private PrimaryGUI gui;
+    private JPanel panel = new JPanel();
+        
+    private JButton open = new JButton("open");
+    private JButton feel = new JButton("feel");
+    private JButton take = new JButton("take");
+    private JButton put  = new JButton("put");
+    private JButton read = new JButton("read");
+    private JButton back = new JButton("back");
+    private JButton help = new JButton("help");
+    private JButton quit = new JButton("quit");
+    private JButton clear = new JButton("clear text");
+
     public PrimaryPanel(PrimaryGUI gui)
     {
         this.gui = gui;
@@ -13,18 +25,13 @@ public class PrimaryPanel
     
     public JPanel getPrimaryPanel()
     {
-        JPanel panel = new JPanel();
-        
-        JButton open = new JButton("open");
-        JButton feel = new JButton("feel");
-        JButton take = new JButton("take");
-        JButton put  = new JButton("put");
-        JButton read = new JButton("read");
-        JButton back = new JButton("back");
-        JButton help = new JButton("help");
-        JButton quit = new JButton("quit");
-        JButton clear = new JButton("clear text");
-        
+        addButtonsToPanel();
+        setButtonListeners();
+        return panel;
+    }
+
+    public void setButtonListeners()
+    {
         open.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,7 +94,10 @@ public class PrimaryPanel
                 gui.textArea.setText(null);
             }
         });
-        
+    }
+
+    public void addButtonsToPanel()
+    {
         panel.add(open);
         panel.add(feel);
         panel.add(take);
@@ -97,7 +107,5 @@ public class PrimaryPanel
         panel.add(help);
         panel.add(quit);
         panel.add(clear);
-        
-        return panel;
     }
 }
