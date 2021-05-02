@@ -11,3 +11,4 @@ Win condition: Kill the dragon and save the prince.
 Lose condition: Face the dragon without a sword and die.
 
 **You can run the game by compiling and then running the Applicattion.java class**
+Inspired by zuul-better project from Michael Kölling and David J. Barnes.
